@@ -12,9 +12,13 @@ pipeline {
         }
         stage('SAST'){
             agent{
-                docker{ image 'semgrep/semgrep' }
+                docker{ 
+                    image 'semgrep/semgrep' 
+                    args '-v "${PWD}:/src"'    
+                }
             }
             steps{
+                sh 'cd /src'
                 sh 'semgrep scan'
             }
         }
