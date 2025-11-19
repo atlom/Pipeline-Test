@@ -14,17 +14,14 @@ pipeline {
             agent{
                 docker{ 
                     image 'semgrep/semgrep' 
-                    args "-v ${env.WORKSPACE}:/src -w /src"  
+                    args '-v "${PWD}:/src"'    
                 }
             }
             steps{
                 sh '''
-            echo "Directorio actual (debería ser /src):"
-            pwd
-            ls
-
-            semgrep scan
-        '''
+                    cd /src
+                    semgrep scan
+                '''
             }
         }
         stage('Compilation') {
