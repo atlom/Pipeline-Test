@@ -15,7 +15,7 @@ pipeline {
                 docker{ image 'semgrep/semgrep' }
             }
             steps{
-                sh 'semgrep --help'
+                sh 'semgrep scan'
             }
         }
         stage('Compilation') {
