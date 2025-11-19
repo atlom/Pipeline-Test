@@ -10,7 +10,16 @@ pipeline {
                 sh 'php --version'
             }
         }
-
+        stage('SAST'){
+            agent{
+                docker{
+                    image 'semgrep/semgrep'
+                }
+                steps{
+                    sh 'semgrep --help'
+                }
+            }
+        }
         stage('Compilation') {
             agent {
                 docker { image 'php:8.2-cli' }
