@@ -12,12 +12,10 @@ pipeline {
         }
         stage('SAST'){
             agent{
-                docker{
-                    image 'semgrep/semgrep'
-                }
-                steps{
-                    sh 'semgrep --help'
-                }
+                docker{ image 'semgrep/semgrep' }
+            }
+            steps{
+                sh 'semgrep --help'
             }
         }
         stage('Compilation') {
