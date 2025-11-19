@@ -19,6 +19,7 @@ pipeline {
             }
             steps{
                 sh 'cd /src'
+                sh 'ls'
                 sh 'semgrep scan'
             }
         }
