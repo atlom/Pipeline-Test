@@ -14,7 +14,7 @@ pipeline {
             agent{
                 docker{ 
                     image 'semgrep/semgrep' 
-                    args '-v "${PWD}:/src"'    
+                    args "-v ${PWD}:/src"    
                 }
             }
             steps{
